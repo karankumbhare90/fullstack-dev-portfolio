@@ -1,0 +1,47 @@
+# Node modules
+node_modules/
+
+# Build output
+.next/
+out/
+dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*.local
+!.env.example
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+*.code-workspace
+
+# Local dependencies
+.pnp/
+.pnp.js
+
+# Testing
+coverage/
+*.lcov
+
+# CI/CD
+*.log
+.cache/
+.now/
+.vercel/
+.netlify/
+
+# TypeScript
+*.tsbuildinfo
+
+# SvelteKit / Turbo / TurboRepo (if used)
+turbo/
