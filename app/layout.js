@@ -1,6 +1,6 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import "./variables.css";
+import "./App.css";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -21,7 +21,15 @@ export default function RootLayout({ children }) {
       </head>
       <body
         className={`${poppins.variable} antialiased`}
+        data-theme="light"
       >
+        <div className="blob blob-blue"></div>
+        <div className="blob blob-purple"></div>
+        <div className="blob blob-green"></div>
+        <div className="blob blob-cyan"></div>
+        <div className="blob blob-purple2"></div>
+        <div className="blob blob-pink"></div>
+        <div className="blob blob-purple3"></div>
         {children}
       </body>
     </html>
