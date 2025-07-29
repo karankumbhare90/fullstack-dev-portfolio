@@ -2,8 +2,9 @@ name: Deploy - Develop
 
 on:
   push:
-    branches:
-      - develop
+    branches: [develop]
+  pull_request:
+    branches: [develop]
 
 jobs:
   deploy:
