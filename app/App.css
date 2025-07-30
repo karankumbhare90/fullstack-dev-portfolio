@@ -2,8 +2,6 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic");
 
 *{
-  padding: 0;
-  margin: 0;
   scroll-behavior: smooth;
   font-family: 'Poppins';
   list-style: none;
@@ -52,10 +50,10 @@
   --line-height-relaxed: 1.75;
 
   /* Font Size */
-  --h1-size : 3.5rem;
-  --h2-size : 3rem;
-  --h3-size : 2.5rem;
-  --h4-size : 2rem;
+  --h1-size : 3rem;
+  --h2-size : 2.5rem;
+  --h3-size : 2rem;
+  --h4-size : 1.75rem;
   --h5-size : 1.5rem;
   --h6-size : 1.25rem;
   --p-size : 17px;
@@ -301,6 +299,7 @@ body{
   background: var(--primary-background);
   color: var(--gray-color-6);
   position: relative;
+  min-height: 100vh;
 
   &::before,
   &::after {
@@ -323,8 +322,11 @@ body{
   }
 }
 
+.container{
+  @apply px-4 sm:px-0 mx-auto;
+}
+
 h1{
-  @apply mb-6 lg:mb-8;
   font-size: var(--h1-size);
   font-weight: var(--h1-font-weight);
   color: var(--gray-color-7);
@@ -332,14 +334,12 @@ h1{
 }
 
 h2{
-  @apply mb-6 lg:mb-8;
   font-size: var(--h2-size);
   font-weight: var(--h2-font-weight);
   color: var(--gray-color-7);
   line-height: 1.2;
 }
 h3{
-  @apply mb-6 lg:mb-8;
   font-size: var(--h3-size);
   font-weight: var(--h3-font-weight);
   color: var(--gray-color-7);
@@ -347,7 +347,6 @@ h3{
 }
 
 h4{
-  @apply mb-6 lg:mb-8;
   font-size: var(--h4-size);
   font-weight: var(--h4-font-weight);
   color: var(--gray-color-7);
@@ -355,7 +354,6 @@ h4{
 }
 
 h5{
-  @apply mb-6 lg:mb-8;
   font-size: var(--h5-size);
   font-weight: var(--h5-font-weight);
   color: var(--gray-color-7);
@@ -363,7 +361,6 @@ h5{
 }
 
 h6{
-  @apply mb-6 lg:mb-8;
   font-size: var(--h6-size);
   font-weight: var(--h6-font-weight);
   color: var(--gray-color-7);
@@ -371,8 +368,6 @@ h6{
 }
 
 p{
-  font-size: var(--p-size);
-  font-weight: var(--p-font-weight);
   line-height: 1.4;
 }
 
@@ -393,11 +388,10 @@ p{
 }
 
 
-section{
-  .inner-wrap{
-    @apply py-10 lg:py-20;
-  }
+.inner-wrap{
+  @apply py-5 lg:py-10;
 }
+
 
 .rich-text-content, .description-wrap{
   @apply mb-6 lg:mb-8;
@@ -408,6 +402,14 @@ section{
       @apply mb-0;
     }
   }
+}
+
+.no-scrollbar{
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  } 
 }
 
 @media (max-width : 991px){
