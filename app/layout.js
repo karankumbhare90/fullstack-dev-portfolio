@@ -1,6 +1,6 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import "./App.css";
+
 import AppSidebar from "./_components/AppSidebar";
 
 const poppins = Poppins({
@@ -24,26 +24,23 @@ export default function RootLayout({ children }) {
         className={`${poppins.variable} antialiased lg:overflow-y-hidden overflow-x-hidden`}
         data-theme="light"
       >
-        <div className="blob blob-blue"></div>
-        <div className="blob blob-purple"></div>
-        <div className="blob blob-green"></div>
-        <div className="blob blob-cyan"></div>
-        <div className="blob blob-purple2"></div>
-        <div className="blob blob-pink"></div>
-        <div className="blob blob-purple3"></div>
         <div className="relative z-[10000]">
           <div className="flex items-center justify-center relative">
             <div className="lg:block hidden absolute w-[55vw] h-full top-0 -left-[30%] bg-white" />
             <div className="w-full container relative">
-              <div className="grid grid-cols-1 lg:grid-cols-12 h-screen relative z-[10000]">
+              <div className="w-full flex flex-wrap items-start justify-between h-screen relative z-[10000] lg:-mx-5">
                 {/* Sidebar */}
-                <div className="lg:col-span-3 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto sm:px-5 bg-white inner-wrap relative no-scrollbar">
-                  <AppSidebar />
+                <div className="w-full lg:w-3/12 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto bg-white inner-wrap relative no-scrollbar">
+                  <div className="w-full h-full lg:px-5 lg:border-r">
+                    <AppSidebar />
+                  </div>
                 </div>
 
                 {/* Main Content */}
-                <div className="lg:col-span-9 h-full lg:overflow-y-auto sm:px-5 lg:pl-10 inner-wrap no-scrollbar">
-                  {children}
+                <div className="w-full lg:w-9/12 h-full lg:overflow-y-auto pb-6 lg:py-12 no-scrollbar">
+                  <div className="w-full h-full lg:px-5">
+                    {children}
+                  </div>
                 </div>
               </div>
             </div>
