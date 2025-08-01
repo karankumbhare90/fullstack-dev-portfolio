@@ -1,2 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* External CSS */
 @import "./App.css";
-@import "tailwindcss";
+@import './css/contact.css';
