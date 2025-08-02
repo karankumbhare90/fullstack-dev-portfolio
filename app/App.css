@@ -66,6 +66,7 @@
   --h4-size-sm : 1.375rem;
   --h5-size-sm : 1.25rem;
   --h6-size-sm : 1.125rem;
+  --p-size-sm : 16px;
 
   /* Font Weight */
   --h1-font-weight : 700;
@@ -232,67 +233,69 @@ h1, h2, h3, h4, h5, h6{
 }
 
 h1{
-  font-size: var(--h1-size);
-  font-weight: var(--h1-font-weight);
-  line-height: var(--h1-line-height);
+  font-size: var(--h1-size) !important;
+  font-weight: var(--h1-font-weight) !important;
+  line-height: var(--h1-line-height) !important;
 }
 
 h2{
-  font-size: var(--h2-size);
-  font-weight: var(--h2-font-weight);
-  line-height: var(--h2-line-height);
+  font-size: var(--h2-size) !important;
+  font-weight: var(--h2-font-weight) !important;
+  line-height: var(--h2-line-height) !important;
 }
 h3{
-  font-size: var(--h3-size);
-  font-weight: var(--h3-font-weight);
-  line-height: var(--h3-line-height);
+  font-size: var(--h3-size) !important;
+  font-weight: var(--h3-font-weight) !important;
+  line-height: var(--h3-line-height) !important;
 }
 
 h4{
-  font-size: var(--h4-size);
-  font-weight: var(--h4-font-weight);
-  line-height: var(--h4-line-height);
+  font-size: var(--h4-size) !important;
+  font-weight: var(--h4-font-weight) !important;
+  line-height: var(--h4-line-height) !important;
 }
 
 h5{
-  font-size: var(--h5-size);
-  font-weight: var(--h5-font-weight);
-  line-height: var(--h5-line-height);
+  font-size: var(--h5-size) !important;
+  font-weight: var(--h5-font-weight) !important;
+  line-height: var(--h5-line-height) !important;
 }
 
 h6{
-  font-size: var(--h6-size);
-  font-weight: var(--h6-font-weight);
-  line-height: var(--h6-line-height);
+  font-size: var(--h6-size) !important;
+  font-weight: var(--h6-font-weight) !important;
+  line-height: var(--h6-line-height) !important;
 }
 
 p{
+  font-size: var(--p-size) !important;
+  font-weight: var(--p-font-weight) !important;
   line-height: 1.4;
 }
 
 @media (max-width : 991px){
   h1{
-    font-size: var(--h1-size-sm);
-    font-weight: var(--h1-font-weight);
-    line-height: var(--h1-line-height-sm);
+    font-size: var(--h1-size-sm) !important;
+    font-weight: var(--h1-font-weight) !important;
+    line-height: var(--h1-line-height-sm) !important;
   }
 
   h2{
-    font-size: var(--h2-size-sm);
-    font-weight: var(--h2-font-weight);
-    line-height: var(--h2-line-height-sm);
+    font-size: var(--h2-size-sm) !important;
+    font-weight: var(--h2-font-weight) !important;
+    line-height: var(--h2-line-height-sm) !important;
   }
 
   h3{
-    font-size: var(--h3-size-sm);
-    font-weight: var(--h3-font-weight);
-    line-height: var(--h3-line-height);
+    font-size: var(--h3-size-sm) !important;
+    font-weight: var(--h3-font-weight) !important;
+    line-height: var(--h3-line-height-sm) !important;
   }
 
   h4{
-    font-size: var(--h4-size-sm);
-    font-weight: var(--h4-font-weight);
-    line-height: var(--h4-line-height);
+    font-size: var(--h4-size-sm) !important;
+    font-weight: var(--h4-font-weight) !important;
+    line-height: var(--h4-line-height-sm) !important;
   }
 
   h5{
@@ -305,6 +308,12 @@ p{
     font-size: var(--h6-size-sm);
     font-weight: var(--h6-font-weight);
     line-height: var(--h6-line-height);
+  }
+
+  h6{
+    font-size: var(--p-size-sm);
+    font-weight: var(--p-font-weight);
+    line-height: var(--p-line-height);
   }
 }
 
