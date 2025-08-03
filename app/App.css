@@ -273,6 +273,15 @@ p{
   line-height: 1.4;
 }
 
+.shadow-1{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+/* Experience Span */
+.ex-span{
+  @apply text-xs text-[var(--gray-color-6)];
+}
+
 @media (max-width : 991px){
   h1{
     font-size: var(--h1-size-sm) !important;
