@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
               <div className="w-full flex flex-wrap items-start justify-between h-screen relative z-[10000] lg:-mx-5">
                 {/* Sidebar */}
                 <div className="w-full lg:w-3/12 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto bg-[var(--gray-color-1)] inner-wrap relative no-scrollbar">
-                  <div className="w-full h-full lg:px-5 lg:border-r">
+                  <div className="w-full h-full lg:px-5">
                     <AppSidebar />
                   </div>
                 </div>

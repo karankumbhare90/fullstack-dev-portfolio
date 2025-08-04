@@ -1,0 +1,18 @@
+/* Project CSS */
+@tailwind components;
+
+.latest-projects{
+    .project-slider{
+        .slick-slider{
+            @apply pb-5;
+
+            .slick-slide{
+                @apply px-3;
+
+                /* &.slick-active{
+                     @apply scale-110; 
+                } */
+            }
+        }
+    }
+}
