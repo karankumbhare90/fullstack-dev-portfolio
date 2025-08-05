@@ -77,11 +77,11 @@ export default function Skills() {
             <div className="mt-6 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5">
                 {skillsObj.map((item, index) => (
                     <div key={index} className={`relative`}>
-                        <div className={`w-full flex flex-col items-center justify-center bg-[var(--gray-color-1)] transition-all duration-300 rounded-md p-5 gap-2 ${item.bgClass}`}>
+                        <div className={`w-full flex flex-col items-center justify-center bg-[var(--gray-color-1)] transition-all duration-300 rounded-md p-5 gap-4 ${item.bgClass}`}>
                             <div className='relative overflow-hidden size-16'>
                                 <Image src={item.icon} alt={item.name} fill className='object-contain' />
                             </div>
-                            <span>{item.name}</span>
+                            <span className='text-sm text-[var(--gray-color-5)]'>{item.name}</span>
                         </div>
                     </div>
                 ))}
