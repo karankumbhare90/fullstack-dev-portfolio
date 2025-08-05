@@ -1,8 +1,19 @@
-import React from 'react'
-import { FaLink, FaLocationDot } from 'react-icons/fa6'
-import { RiGithubLine } from 'react-icons/ri'
+"use client";
+import React, { useState } from 'react'
 
 export default function Contact() {
+    const [loading, setLoading] = useState(false)
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setLoading(true)
+
+        // Simulate async request (e.g. API call)
+        setTimeout(() => {
+            setLoading(false)
+            alert("Message sent!") // Replace with actual logic
+        }, 2000)
+    }
 
     return (
         <div className='lg:pl-10 lg:border-l border-[var(--gray-color-2)] relative contact pb-10'>
@@ -10,36 +21,56 @@ export default function Contact() {
                 <span className='h-3 w-3 rounded-full bg-[var(--secondary-color-6)]'></span>
             </div>
             <h4 className='relative'>Contact</h4>
-            <div className="mt-6 pl-1 flex flex-col">
-                {[1, 2, 3].map((item, index) => (
-                    <div key={index} className={`${index !== 2 ? 'border-l' : ''} pl-5 ml-1 pb-5 relative`}>
-                        {/* Child Dots */}
-                        <div className='absolute h-2.5 w-2.5 rounded-full -left-[5px] top-0 flex items-center justify-center bg-[var(--gray-color-1)]' >
-                            <span className='h-full w-full rounded-full bg-[var(--secondary-color-6)]'></span>
+            <div className="mt-6 flex flex-col">
+                <form
+                    onSubmit={handleSubmit}
+                    className='bg-[var(--gray-color-1)] hover:bg-[var(--primary-color-1)] group relative p-5 rounded-md grid grid-cols-1 gap-5'
+                >
+                    <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-5'>
+                        <div className='relative contact-form-input'>
+                            <input
+                                type="text"
+                                id="firstName"
+                                placeholder="First Name"
+                                required
+                            />
                         </div>
-                        <div className='w-full'>
-                            <div className='flex flex-col gap-2 items-start justify-start'>
-                                <div className='flex items-center justify-start gap-2.5'>
-                                    {/* Date And Localtion */}
-                                    <div className='flex items-center justify-center ex-span'>
-                                        <span className='mr-1'>Start Date</span> - <span className='ml-1'>End Date</span>
-                                    </div>
-                                    <div className='flex items-center justify-center gap-2 ex-span'>
-                                        <FaLocationDot fontSize={12} className='contact-icon' />
-                                        <span>Ahmedabad, Gujarat</span>
-                                    </div>
-                                </div>
-
-                                {/* Company Details */}
-                                <div className='flex items-start justify-start gap-2.5'>
-                                    <span className='mb-0 !text-sm text-[var(--gray-color-5)]'>Jr. Frontend Developer</span>
-                                    <p className='mb-0 !text-sm text-[var(--gray-color-7)]'>Digiwhiz</p>
-                                </div>
-
-                            </div>
+                        <div className="relative contact-form-input w-full">
+                            <input
+                                type="text"
+                                id="lastName"
+                                placeholder="Last Name"
+                                required
+                            />
                         </div>
                     </div>
-                ))}
+                    <div className="relative contact-form-input w-full">
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Email"
+                            required
+                        />
+                    </div>
+                    <div className="relative contact-form-input w-full">
+                        <textarea
+                            id="message"
+                            placeholder="Message"
+                            className="!max-h-32 resize-none"
+                            rows={5}
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <button
+                            type='submit'
+                            disabled={loading}
+                            className={`text-base font-semibold rounded-md transition-all primary-gradient`}>
+                            {loading ? 'Sending...' : 'Send Message'}
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     )
