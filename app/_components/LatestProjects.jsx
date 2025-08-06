@@ -30,9 +30,6 @@ export default function LatestProjects() {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 1,
-        speed: 50000,
-        slidesToShow: 1,
         centerMode: true,
         centerPadding: '100px',
         arrows: false,
@@ -90,7 +87,7 @@ export default function LatestProjects() {
             <div className='absolute h-7 w-7 rounded-full -left-4 top-0 hidden lg:flex items-center justify-center shadow-1 bg-[var(--gray-color-1)]'>
                 <span className='h-3 w-3 rounded-full bg-[var(--secondary-color-6)]'></span>
             </div>
-            <h4 className='relative'>Latest Projects</h4>
+            <h4 className='relative' data-aos="fade-up">Latest Projects</h4>
             <div className="project-slider w-full mt-6 relative">
                 <div className='pointer-events-none lg:hidden z-10 absolute h-full w-1/6 left-0 top-0 bg-gradient-to-r from-[var(--primary-background)] to-transparent' />
                 <div className='pointer-events-none lg:hidden z-10 absolute h-full w-1/6 right-0 top-0 bg-gradient-to-l from-[var(--primary-background)] to-transparent' />
@@ -101,7 +98,7 @@ export default function LatestProjects() {
                 ) : (
                     <div className='mt-4 grid lg:grid-cols-3 xl:gridc-cols-4 items-center items-stretch justify-between sm:-mx-3 lg:-mb-6'>
                         {[1, 2, 3].map((item, index) => (
-                            <div key={index} className='relative w-full mb-6 sm:px-3'>
+                            <div key={index} className='relative w-full mb-6 sm:px-3' data-aos="fade-up" data-aos-delay={`${(index + 1) * 100}`}>
                                 {projectCards[index]}
                             </div>
                         ))}

@@ -24,7 +24,7 @@ export default function Contact() {
             <div className="mt-6 flex flex-col">
                 <form
                     onSubmit={handleSubmit}
-                    className='bg-[var(--gray-color-1)] hover:bg-[var(--primary-color-1)] group relative p-5 rounded-md grid grid-cols-1 gap-5'
+                    className='bg-[var(--gray-color-1)] group relative p-5 rounded-md grid grid-cols-1 gap-5'
                 >
                     <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-5'>
                         <div className='relative contact-form-input'>
@@ -66,7 +66,7 @@ export default function Contact() {
                         <button
                             type='submit'
                             disabled={loading}
-                            className={`text-base font-semibold rounded-md transition-all primary-gradient`}>
+                            className={`text-base font-medium rounded-md transition-all button button-primary`}>
                             {loading ? 'Sending...' : 'Send Message'}
                         </button>
                     </div>

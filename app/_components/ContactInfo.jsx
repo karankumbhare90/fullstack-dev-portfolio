@@ -12,38 +12,36 @@ export default function ContactInfo() {
     }
 
     return (
-        <div className='w-full pt-5'>
-            <div className='grid grid-cols-1 gap-4'>
-                <div className='flex items-start justify-start gap-2.5'>
-                    <a href={`mailto:${contactInfo?.email}`} className='contact-icon-div group'>
-                        <BsEnvelope fontSize={12} className='contact-icon' />
-                    </a>
+        <>
+            <div className='flex items-start justify-start gap-2.5'>
+                <a href={`mailto:${contactInfo?.email}`} className='contact-icon-div group'>
+                    <BsEnvelope fontSize={12} className='contact-icon' />
+                </a>
 
-                    <div className='flex flex-col gap-1 items-start justify-center'>
-                        <span className='contact-info-lable'>Email</span>
-                        <a href={`mailto:${contactInfo?.email}`} className='contact-info'>{contactInfo.email}</a>
-                    </div>
-                </div>
-                <div className='flex items-start justify-start gap-2.5'>
-                    <a href={`tel:${contactInfo?.phone}`} className='contact-icon-div group'>
-                        <MdCall fontSize={12} className='contact-icon' />
-                    </a>
-
-                    <div className='flex flex-col gap-1 items-start justify-center'>
-                        <span className='contact-info-lable'>Phone</span>
-                        <a href={`tel:${contactInfo?.phone}`} className='contact-info'>{contactInfo?.phone}</a>
-                    </div>
-                </div>
-                <div className='flex items-start justify-start gap-2.5'>
-                    <div className='contact-icon-div group'>
-                        <FaLocationDot fontSize={12} className='contact-icon' />
-                    </div>
-                    <div className='flex flex-col gap-1 items-start justify-center'>
-                        <span className='contact-info-lable'>Adress</span>
-                        <div className='contact-info'>{contactInfo?.address}</div>
-                    </div>
+                <div className='flex flex-col gap-1 items-start justify-center'>
+                    <span className='contact-info-lable'>Email</span>
+                    <a href={`mailto:${contactInfo?.email}`} className='contact-info'>{contactInfo.email}</a>
                 </div>
             </div>
-        </div>
+            <div className='flex items-start justify-start gap-2.5'>
+                <a href={`tel:${contactInfo?.phone}`} className='contact-icon-div group'>
+                    <MdCall fontSize={12} className='contact-icon' />
+                </a>
+
+                <div className='flex flex-col gap-1 items-start justify-center'>
+                    <span className='contact-info-lable'>Phone</span>
+                    <a href={`tel:${contactInfo?.phone}`} className='contact-info'>{contactInfo?.phone}</a>
+                </div>
+            </div>
+            <div className='flex items-start justify-start gap-2.5'>
+                <div className='contact-icon-div group'>
+                    <FaLocationDot fontSize={12} className='contact-icon' />
+                </div>
+                <div className='flex flex-col gap-1 items-start justify-center'>
+                    <span className='contact-info-lable'>Adress</span>
+                    <div className='contact-info'>{contactInfo?.address}</div>
+                </div>
+            </div>
+        </>
     )
 }
