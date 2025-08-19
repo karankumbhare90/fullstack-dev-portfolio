@@ -7,6 +7,7 @@ import { MdArrowOutward } from "react-icons/md";
 import { RiGithubLine } from "react-icons/ri";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { projectsData } from '../assets/data';
 
 export default function LatestProjects() {
     const [isMobile, setIsMobile] = useState(false);
@@ -35,47 +36,49 @@ export default function LatestProjects() {
         arrows: false,
     }
 
-    const projectCards = [1, 2, 3].map((item, index) => (
+    const projectCards = projectsData?.map((project, index) => (
         <div className='flex items-start justify-start' key={index}>
             <div className='w-full h-full bg-[var(--gray-color-1)] hover:bg-[var(--primary-color-1)] transition-all duration-300 rounded-md p-4 relative group'>
                 {/* Link */}
-                <a href='#' className='cursor-pointer absolute right-4 top-4'>
-                    <div className='relative group p-1.5 bg-[var(--secondary-color-2)] hover:bg-[var(--secondary-color-3)] rounded-full flex items-center justify-center gap-1.5'>
-                        <MdArrowOutward className='text-[var(--secondary-color-4)] group-hover:text-[var(--gray-color-6)]' fontSize={12} />
-                    </div>
+                {project?.liveLink && (
+                    <a href='#' className='cursor-pointer absolute right-4 top-4'>
+                        <div className='relative group p-1.5 bg-[var(--secondary-color-2)] hover:bg-[var(--secondary-color-3)] rounded-full flex items-center justify-center gap-1.5'>
+                            <MdArrowOutward className='text-[var(--secondary-color-4)] group-hover:text-[var(--gray-color-6)]' fontSize={12} />
+                        </div>
 
-                </a>
+                    </a>
+                )}
                 <div className="w-full flex flex-col items-start justify-start">
                     <div className='size-16 lg:size-24 overflow-hidden relative'>
-                        <Image src={'/Profile-sm.jpg'} alt='Project Image' fill className='w-full h-full object-cover rounded-md' />
+                        <Image src={project?.projectCoverImage} alt={project?.name} fill className='w-full h-full object-cover rounded-md' />
                     </div>
                     <div className='mt-4'>
-                        <h6 className='!text-lg'>Powerful Design System</h6>
-                        <p className='line-clamp-2 !text-sm mt-2.5'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore, incidunt! Quidem, veritatis pariatur dolor porro magni fugiat id veniam incidunt ipsum eum iure minus unde culpa doloremque ipsam inventore aut.</p>
-                        <div className='mt-4'>
+                        <h6 className='!text-lg'>{project?.name}</h6>
+                        {project?.description && (<p className='line-clamp-2 !text-sm mt-2.5'>{project?.description}</p>)}
+                        {project?.gitHubLink || project.technologies.length > 0 && (<div className='mt-4'>
                             <div className='button-group flex items-center justify-start gap-2.5'>
-                                <a href='#' className='cursor-pointer flex items-center justify-start gap-2'>
+                                {project?.gitHubLink && (<a href={project?.gitHubLink} className='cursor-pointer flex items-center justify-start gap-2'>
                                     <div className='relative group p-1.5 bg-[var(--secondary-color-2)] hover:bg-[var(--secondary-color-3)] rounded-full flex items-center justify-center gap-1.5'>
                                         <RiGithubLine className='text-[var(--secondary-color-5)] group-hover:text-[var(--gray-color-6)]' fontSize={12} />
                                     </div>
                                     <span className='!text-sm text-[var(--secondary-color-5)]'>GitHub</span>
-                                </a>
+                                </a>)}
 
-                                <div className='flex flex-1 items-center justify-end gap-1.5 relative mr-2.5'>
-                                    <div className='absolute h-full w-1/6 rounded-md bg-gradient-to-l from-[var(--gray-color-1)] group-hover:from-[var(--primary-color-1)] to-transparent' />
+                                <div className='flex flex-1 items-center justify-end gap-1.5 relative'>
+                                    <div className='absolute h-full w-1/6 right-0 bg-gradient-to-l from-[var(--gray-color-1)] group-hover:from-[var(--primary-color-1)] transition-all duration-300 to-transparent' />
                                     {
-                                        [1, 2, 3,].map((_, idx) => (
+                                        project?.technologies?.map((technology, idx) => (
                                             <span
                                                 key={idx}
-                                                className={`text-xs text-[var(--secondary-color-6)] font-semibold px-1 py-0.5 rounded bg-blue-100 text-blue-600 flex items-center justify-center`}
+                                                className={`text-xs text-[var(--secondary-color-6)] font-semibold px-1 py-0.5 rounded text-blue-600 flex items-center justify-center`}
                                             >
-                                                Hello
+                                                #{technology?.name}
                                             </span>
                                         ))
                                     }
                                 </div>
                             </div>
-                        </div>
+                        </div>)}
                     </div>
                 </div>
             </div>
