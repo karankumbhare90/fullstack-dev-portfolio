@@ -1,3 +1,4 @@
+
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import AppSidebar from "./_components/AppSidebar";
@@ -15,7 +16,9 @@ export const metadata = {
   description: "Portfolio By Karan Kumbhare",
 };
 
+
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
