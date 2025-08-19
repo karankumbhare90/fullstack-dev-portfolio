@@ -1,19 +1,21 @@
 import Image from 'next/image'
 import React from 'react'
+import { topProfileData } from '../assets/data'
 
 export default function TopProfile() {
+    const { name, profileImage, currentDesignation, quote } = topProfileData;
     return (
         <div className='w-full'>
             <div className='flex flex-col gap-2 items-center lg:items-start justify-center border-b border-[var(--gray-color-2)] pb-5'>
                 <div className='flex flex-col items-center lg:items-start justify-center gap-2.5'>
                     <div className="w-full flex items-center lg:justify-start justify-center">
                         <div className='lg:size-24 size-40 overflow-hidden relative'>
-                            <Image src={'/Profile-sm.jpg'} alt='Profile' fill className='w-full h-full object-cover rounded-full' />
+                            <Image src={profileImage} alt='Profile' fill className='w-full h-full object-cover rounded-full' />
                         </div>
                     </div>
                     <div className='flex flex-col items-center lg:items-start justify-center gap-1.5'>
-                        <h5 className='mb-0 !font-bold'>Karan Kumbhare</h5>
-                        <h6 className='mb-0 !text-base font-medium primary-gradient'>Full-Stack Developer</h6>
+                        <h5 className='mb-0 !font-bold'>{name}</h5>
+                        <h6 className='mb-0 !text-base font-medium primary-gradient'>{currentDesignation}</h6>
                     </div>
                 </div >
                 <div className='flex items-center justify-center lg:justify-start'>
@@ -25,7 +27,7 @@ export default function TopProfile() {
                             </svg>
                         </span>
                         <span className='inline text-sm'>
-                            Code is today&apos;s ink for writing tomorrow !!
+                            {quote}
                         </span>
                         <span className='quote-right-icon absolute right-0 -bottom-1/12 h-3 w-3'>
                             <svg className='w-full h-full' viewBox="0 0 6 5" fill="none" xmlns="http://www.w3.org/2000/svg">

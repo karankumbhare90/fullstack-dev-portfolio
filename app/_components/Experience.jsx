@@ -1,29 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
 import { FaLocationDot } from 'react-icons/fa6'
+import { experiences } from '../assets/data'
 
 export default function Experience() {
-
-    const experiences = [
-        {
-            companyName: 'Digiwhiz',
-            location: 'Ahmedabad, Gujarat',
-            experience: {
-                position: 'Jr. Front-End Developer',
-                startData: 'Aug 2025',
-                endData: 'Present'
-            }
-        },
-        {
-            companyName: 'Digiwhiz',
-            location: 'Ahmedabad, Gujarat',
-            experience: {
-                position: 'Front-End Developer Trainee',
-                startData: 'Jan 2025',
-                endData: 'Aug 2025'
-            }
-        }
-    ]
 
     return (
         <div className='experience lg:pl-10 lg:border-l border-[var(--gray-color-2)] relative pb-10'>
