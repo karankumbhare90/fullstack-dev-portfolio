@@ -10,7 +10,7 @@ export default function ContactInfo() {
 
     return (
         <>
-            <div className='flex items-start justify-start gap-2.5'>
+            <div className='w-full flex items-start justify-start gap-2.5'>
                 <a href={`mailto:${email}`} className='contact-icon-div group'>
                     <BsEnvelope fontSize={12} className='contact-icon' />
                 </a>
@@ -20,7 +20,7 @@ export default function ContactInfo() {
                     <a href={`mailto:${email}`} className='contact-info'>{contactInfo.email}</a>
                 </div>
             </div>
-            <div className='flex items-start justify-start gap-2.5'>
+            <div className='w-full flex flex-wrap items-start justify-start gap-2.5'>
                 <a href={`tel:${phone}`} className='contact-icon-div group'>
                     <MdCall fontSize={12} className='contact-icon' />
                 </a>
@@ -30,7 +30,7 @@ export default function ContactInfo() {
                     <a href={`tel:${phone}`} className='contact-info'>{phone}</a>
                 </div>
             </div>
-            <div className='flex items-start justify-start gap-2.5'>
+            <div className='w-full flex flex-wrap items-start justify-start gap-2.5'>
                 <div className='contact-icon-div group'>
                     <FaLocationDot fontSize={12} className='contact-icon' />
                 </div>

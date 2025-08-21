@@ -24,7 +24,7 @@ export default function Experience() {
                         <div className='w-full flex items-start justify-start gap-4 p-4 rounded-md bg-[var(--gray-color-1)] hover:bg-[var(--primary-color-1)] transition-all duration-300'>
                             <div className='lg:size-16 size-12 overflow-hidden relative'>
                                 {item?.companyImage
-                                    ? <Image src={'/Profile-sm.jpg'} alt='Profile' fill className='w-full h-full object-cover rounded-lg' />
+                                    ? <Image src={item?.companyImage} alt={item?.companyName} fill className='w-full h-full object-cover rounded-lg' />
                                     : <>
                                         <span className='h-full w-full bg-[var(--secondary-color-3)] flex items-center justify-center rounded-full text-xl font-bold border-4 border-[var(--gray-color-2)]'>
                                             {item.companyName?.charAt(0)?.toUpperCase()}
