@@ -11,11 +11,11 @@
     }
 
     .contact-info-lable{
-        @apply text-xs text-[var(--gray-color-5)];
+        @apply text-xs sm:text-sm text-[var(--gray-color-5)];
     }
 
     .contact-info{
-        @apply text-sm text-[var(--gray-color-6)] hover:text-[var(--gray-color-7)];
+        @apply text-xs sm:text-sm text-[var(--gray-color-6)] hover:text-[var(--gray-color-7)];
     }
 
     /* Contact Form CSS */

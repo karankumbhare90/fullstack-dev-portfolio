@@ -53,6 +53,7 @@ export const socialLinks = [
 export const experiences = [
     {
         companyName: 'Digiwhiz',
+        companyImage: '',
         location: 'Ahmedabad, Gujarat',
         experience: {
             position: 'Jr. Front-End Developer',
@@ -62,6 +63,7 @@ export const experiences = [
     },
     {
         companyName: 'Digiwhiz',
+        companyImage: '',
         location: 'Ahmedabad, Gujarat',
         experience: {
             position: 'Front-End Developer Trainee',

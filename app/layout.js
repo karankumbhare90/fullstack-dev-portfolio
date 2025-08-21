@@ -1,9 +1,9 @@
-
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import AppSidebar from "./_components/AppSidebar";
 import AOSProvider from "./_components/AOSProvider";
 import ThemeProvider from "./_components/ThemeProvider";
+import ThemeToggleButton from "./_components/ThemeToggleButton";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -16,9 +16,7 @@ export const metadata = {
   description: "Portfolio By Karan Kumbhare",
 };
 
-
 export default function RootLayout({ children }) {
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -42,6 +40,9 @@ export default function RootLayout({ children }) {
               </div>
             </div>
           </div>
+
+          {/* Floating theme toggle button (no overlap issues now) */}
+          <ThemeToggleButton />
         </ThemeProvider>
       </body>
     </html>

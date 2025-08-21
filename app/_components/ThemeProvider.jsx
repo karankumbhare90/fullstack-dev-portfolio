@@ -1,8 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { HiOutlineSun } from "react-icons/hi";
-import { BsMoonStarsFill } from "react-icons/bs";
+import { createContext, useContext, useEffect, useState } from "react";
+
+const ThemeContext = createContext();
+
+export function useTheme() {
+    return useContext(ThemeContext);
+}
 
 export default function ThemeProvider({ children }) {
     const [theme, setTheme] = useState("dark");
@@ -22,25 +26,8 @@ export default function ThemeProvider({ children }) {
         setTheme((prev) => (prev === "dark" ? "light" : "dark"));
 
     return (
-        <>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
             {children}
-            <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full fixed bottom-5 right-12 z-50 
-                   bg-[var(--gray-color-1)] transition-colors duration-500"
-            >
-                {theme === "dark" ? (
-                    <HiOutlineSun
-                        className="text-yellow-400 transition-transform duration-500 transform rotate-0"
-                        fontSize={22}
-                    />
-                ) : (
-                    <BsMoonStarsFill
-                        className="text-blue-500 transition-transform duration-500 transform rotate-0"
-                        fontSize={20}
-                    />
-                )}
-            </button>
-        </>
+        </ThemeContext.Provider>
     );
 }
