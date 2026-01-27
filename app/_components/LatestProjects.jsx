@@ -1,113 +1,160 @@
 'use client'
-
-import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Slider from 'react-slick'
-import { MdArrowOutward } from "react-icons/md";
+import { MdArrowOutward, MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { RiGithubLine } from "react-icons/ri";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { projectsData } from '../assets/data';
+import SideBarDot from './Shared/SideBarDot';
+import { LuBriefcaseBusiness } from 'react-icons/lu';
+import Link from 'next/link';
+import { colorClasses } from '@/utils/colorClass';
 
 export default function LatestProjects() {
-    const [isMobile, setIsMobile] = useState(false);
+    const sliderRef = useRef(null);
+    const titleRefs = useRef([]);
 
-    // const colors = ['yellow', 'green', 'red', 'blue', 'purple', 'pink', 'orange', 'cyan']
-
-    // // Utility to get random color
-    // const getRandomColor = () => {
-    //     const color = colors[Math.floor(Math.random() * colors.length)]
-    //     return `${color}`
-    // }
+    const setEqualHeight = () => {
+        let maxHeight = 0;
+        titleRefs.current.forEach((el) => {
+            if (el) {
+                el.style.height = "auto";
+                maxHeight = Math.max(maxHeight, el.offsetHeight);
+            }
+        });
+        titleRefs.current.forEach((el) => {
+            if (el) el.style.height = `${maxHeight}px`;
+        });
+    };
 
     useEffect(() => {
-        const checkWidth = () => setIsMobile(window.innerWidth < 1024)
-        checkWidth()
-        window.addEventListener('resize', checkWidth)
-        return () => window.removeEventListener('resize', checkWidth)
-    }, [])
+        setTimeout(setEqualHeight, 100);
+        setEqualHeight();
+        window.addEventListener("resize", setEqualHeight);
+        return () => window.removeEventListener("resize", setEqualHeight);
+    }, []);
 
     const sliderSettings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         centerMode: true,
-        centerPadding: '100px',
         arrows: false,
-    }
+        slidesToShow: 1.9,
+        centerPadding: "200px",
+        afterChange: () => setTimeout(setEqualHeight, 0),
+        responsive: [
+            { breakpoint: 1440, settings: { slidesToShow: 1, centerPadding: "120px" } },
+            { breakpoint: 1280, settings: { slidesToShow: 1, centerPadding: "120px" } },
+            { breakpoint: 991, settings: { slidesToShow: 1, centerPadding: "100px" } },
+            { breakpoint: 640, settings: { slidesToShow: 1, centerPadding: "40px" } },
+        ],
+    };
 
-    const projectCards = projectsData?.map((project, index) => (
-        <div className='flex items-start justify-start' key={index}>
-            <div className='w-full h-full bg-[var(--gray-color-1)] hover:bg-[var(--primary-color-1)] transition-all duration-300 rounded-md p-4 relative group'>
-                {/* Link */}
-                {project?.liveLink && (
-                    <a href='#' className='cursor-pointer absolute right-4 top-4'>
-                        <div className='relative group p-1.5 bg-[var(--secondary-color-2)] hover:bg-[var(--secondary-color-3)] rounded-full flex items-center justify-center gap-1.5'>
-                            <MdArrowOutward className='text-[var(--secondary-color-4)] group-hover:text-[var(--gray-color-6)]' fontSize={12} />
+    const projectCards = projectsData?.map((project, index) => {
+        const selectedColor = colorClasses[project.color] ?? colorClasses.blue;
+
+        return (
+            <div
+                key={project.id}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="w-full h-full flex items-start justify-start"
+            >
+                <div className="w-full h-full relative group bg-slate-200 hover:bg-slate-300 transition-all duration-300 rounded-xl p-4 overflow-hidden hover:shadow-md">
+
+                    <div className="h-full w-full flex flex-col gap-4">
+
+                        {/* Header */}
+                        <div className="w-full flex items-center justify-between">
+                            <div className={`p-2.5 rounded-lg flex ${selectedColor.bg} ${selectedColor.text}`}>
+                                <LuBriefcaseBusiness />
+                            </div>
+
+                            {project?.liveLink ? (
+                                <Link href={project.liveLink}>
+                                    <div className="p-2.5 bg-slate-300 group-hover:bg-slate-400 rounded-lg flex text-gray-700 hover:scale-105 transition-transform">
+                                        <MdArrowOutward fontSize={12} />
+                                    </div>
+                                </Link>
+                            ) : (
+                                <a href={project?.gitHubLink}>
+                                    <div className="p-2.5 bg-slate-300 group-hover:bg-slate-400 rounded-lg flex text-gray-700 hover:scale-105 transition-transform">
+                                        <RiGithubLine fontSize={12} />
+                                    </div>
+                                </a>
+                            )}
                         </div>
 
-                    </a>
-                )}
-                <div className="w-full flex flex-col items-start justify-start">
-                    <div className='size-16 lg:size-24 overflow-hidden relative'>
-                        <Image src={project?.projectCoverImage} alt={project?.name} fill className='w-full h-full object-cover rounded-md' />
-                    </div>
-                    <div className='mt-4'>
-                        <h6 className='!text-lg'>{project?.name}</h6>
-                        {project?.description && (<p className='line-clamp-2 !text-sm mt-2.5'>{project?.description}</p>)}
-                        {project?.gitHubLink || project.technologies.length > 0 && (<div className='mt-4'>
-                            <div className='button-group flex items-center justify-start gap-2.5'>
-                                {project?.gitHubLink && (<a href={project?.gitHubLink} className='cursor-pointer flex items-center justify-start gap-2'>
-                                    <div className='relative group p-1.5 bg-[var(--secondary-color-2)] hover:bg-[var(--secondary-color-3)] rounded-full flex items-center justify-center gap-1.5'>
-                                        <RiGithubLine className='text-[var(--secondary-color-5)] group-hover:text-[var(--gray-color-6)]' fontSize={12} />
-                                    </div>
-                                    <span className='!text-sm text-[var(--secondary-color-5)]'>GitHub</span>
-                                </a>)}
+                        {/* Content */}
+                        <div className="w-full flex flex-col justify-between flex-1 gap-2">
 
-                                <div className='flex flex-1 items-center justify-end gap-1.5 relative'>
-                                    <div className='absolute h-full w-1/6 right-0 bg-gradient-to-l from-[var(--gray-color-1)] group-hover:from-[var(--primary-color-1)] transition-all duration-300 to-transparent' />
-                                    {
-                                        project?.technologies?.map((technology, idx) => (
+                            <h6
+                                ref={(el) => (titleRefs.current[index] = el)}
+                                className="w-full text-sm lg:text-base line-clamp-2 text-gray-800 font-semibold"
+                            >
+                                {project?.name}
+                            </h6>
+
+                            <div className="w-full flex flex-col gap-2">
+                                {project?.description && (
+                                    <p className="line-clamp-3 text-xs lg:text-sm text-gray-600 leading-snug">
+                                        {project.description}
+                                    </p>
+                                )}
+
+                                {project.technologies.length > 0 && (
+                                    <div className="w-full flex flex-wrap justify-end gap-1.5 pt-1">
+                                        {project.technologies.map((technology, idx) => (
                                             <span
                                                 key={idx}
-                                                className={`text-xs text-[var(--secondary-color-6)] font-semibold px-1 py-0.5 rounded text-blue-600 flex items-center justify-center`}
+                                                className={`text-[11px] font-medium px-2 py-0.5 rounded-full bg-white/60 ${selectedColor.text}`}
                                             >
-                                                #{technology?.name}
+                                                #{technology.name}
                                             </span>
-                                        ))
-                                    }
-                                </div>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
-                        </div>)}
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    ))
+        )
+    });
 
     return (
-        <div className='lg:pl-10 lg:border-l border-[var(--gray-color-2)] relative latest-projects pb-10'>
-            <div className='absolute h-7 w-7 rounded-full -left-4 top-0 hidden lg:flex items-center justify-center shadow-1 bg-[var(--gray-color-1)]'>
-                <span className='h-3 w-3 rounded-full bg-[var(--secondary-color-6)]'></span>
+        <section className='section-component latest-projects'>
+            <SideBarDot />
+
+            {/* Heading */}
+            <div
+                className='flex flex-col items-start justify-start gap-1.5'
+                data-aos="fade-up"
+            >
+                <h4 className='section-heading mb-0'>Latest Projects</h4>
+                <p className='section-subheading'>Experience I've in Development</p>
             </div>
-            <h4 className='relative' data-aos="fade-up">Latest Projects</h4>
-            <div className="project-slider w-full mt-6 relative">
-                <div className='pointer-events-none lg:hidden z-10 absolute h-full w-1/6 left-0 top-0 bg-gradient-to-r from-[var(--primary-background)] to-transparent' />
-                <div className='pointer-events-none lg:hidden z-10 absolute h-full w-1/6 right-0 top-0 bg-gradient-to-l from-[var(--primary-background)] to-transparent' />
-                {isMobile ? (
-                    <Slider {...sliderSettings}>
-                        {projectCards}
-                    </Slider>
-                ) : (
-                    <div className='mt-4 grid lg:grid-cols-3 xl:gridc-cols-4 items-center items-stretch justify-between sm:-mx-3 lg:-mb-6'>
-                        {[1, 2, 3].map((item, index) => (
-                            <div key={index} className='relative w-full mb-6 sm:px-3' data-aos="fade-up" data-aos-delay={`${(index + 1) * 100}`}>
-                                {projectCards[index]}
-                            </div>
-                        ))}
-                    </div>
-                )}
+
+            <div className="project-slider relative w-full mt-5 lg:mt-6 mb-5 lg:mb-6">
+                <div className="gradient left-gradient" />
+                <Slider ref={sliderRef} {...sliderSettings}>
+                    {projectCards}
+                </Slider>
+                <div className="gradient right-gradient" />
             </div>
-        </div>
+
+            <div className='flex items-center justify-end gap-4'>
+                <button onClick={() => sliderRef.current.slickPrev()} className='bg-slate-300 rounded-full p-2 hover:bg-slate-400 text-gray-700'>
+                    <MdChevronLeft fontSize={16} />
+                </button>
+
+                <button onClick={() => sliderRef.current.slickNext()} className='bg-slate-300 rounded-full p-2 hover:bg-slate-400 text-gray-700'>
+                    <MdChevronRight fontSize={16} />
+                </button>
+            </div>
+        </section>
     )
 }

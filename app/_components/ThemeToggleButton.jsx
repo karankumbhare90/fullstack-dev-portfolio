@@ -10,13 +10,13 @@ export default function ThemeToggleButton() {
     return (
         <button
             onClick={toggleTheme}
-            className="p-2 rounded-full fixed bottom-5 right-12 
-                 bg-[var(--gray-color-1)] transition-colors duration-500"
+            className="p-2 rounded-full absolute bottom-5 right-12 
+                 bg-gray-200 transition-colors duration-500"
         >
             {theme === "dark" ? (
-                <HiOutlineSun className="text-yellow-400" fontSize={22} />
+                <HiOutlineSun fontSize={22} />
             ) : (
-                <BsMoonStarsFill className="text-blue-500" fontSize={20} />
+                <BsMoonStarsFill fontSize={20} />
             )}
         </button>
     );

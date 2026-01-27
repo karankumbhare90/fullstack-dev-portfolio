@@ -1,51 +1,79 @@
-import Image from 'next/image'
-import React from 'react'
-import { FaLink, FaLocationDot } from 'react-icons/fa6'
-import { RiGithubLine } from 'react-icons/ri'
+import React from "react";
+import { LuGraduationCap } from "react-icons/lu";
+import SideBarDot from "./Shared/SideBarDot";
+import { educationData } from "../assets/data";
+import { colorClasses } from "@/utils/colorClass";
 
 export default function Education() {
+    const BASE_DELAY = 1000; // starts after Experience
+
     return (
-        <div className='education lg:pl-10 lg:border-l border-[var(--gray-color-2)] relative pb-10'>
-            <div className='hidden absolute h-7 w-7 rounded-full -left-4 top-0 lg:flex items-center justify-center shadow-1 bg-[var(--gray-color-1)]' >
-                <span className='h-3 w-3 rounded-full bg-[var(--secondary-color-6)]'></span>
+        <section className="section-component education">
+            <SideBarDot />
+
+            {/* Heading */}
+            <div
+                className="flex flex-col items-start justify-start gap-1.5"
+                data-aos="fade-up"
+                data-aos-delay={BASE_DELAY}
+            >
+                <h4 className="section-heading">Education</h4>
+                <p className="section-subheading">My Academic Background</p>
             </div>
-            <h4 className='relative'>Education</h4>
 
-            <div className='mt-6 -mb-4'>
-                {/* Apply Array Here */}
-                {[1, 2, 3].map((item, index) => (
-                    <div key={index} className={`pb-4 relative`}>
-                        {/* Child Dots */}
-                        {/* <div className='absolute h-2.5 w-2.5 rounded-full -left-[5px] top-0 flex items-center justify-center bg-[var(--gray-color-1)]' >
-                                    <span className='h-full w-full rounded-full bg-[var(--secondary-color-6)]'></span>
-                                </div> */}
+            <div className="w-full mt-5 lg:mt-6">
+                <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {educationData.map((item, index) => {
+                        const selectedColor =
+                            colorClasses[item.color] ?? colorClasses.blue;
 
-                        <div className='w-full flex items-start justify-start gap-4 p-4 rounded-md bg-[var(--gray-color-1)] hover:bg-[var(--primary-color-1)] transition-all duration-300'>
-                            <div className='lg:size-16 size-12 overflow-hidden relative'>
-                                <Image src={'/Profile-sm.jpg'} alt='Profile' fill className='w-full h-full object-cover rounded-lg' />
-                            </div>
-                            <div className='flex flex-1 items-start justify-between'>
-                                {/* Company Details */}
-                                <div className='flex flex-col items-start justify-start gap-2.5'>
-                                    <span className='mb-0 !text-sm text-[var(--gray-color-5)]'>Jr. Frontend Developer</span>
-                                    <p className='mb-0 !text-sm text-[var(--gray-color-7)]'>Digiwhiz</p>
-                                </div>
-                                <div className='flex flex-col items-end justify-start gap-2.5'>
-                                    {/* Date And Localtion */}
-                                    <div className='flex items-center justify-center ex-span'>
-                                        <span className='mr-1'>Start Date</span> - <span className='ml-1'>End Date</span>
+                        return (
+                            <div
+                                key={index}
+                                data-aos="fade-up"
+                                data-aos-delay={BASE_DELAY + 150 + index * 150}
+                                className="relative group"
+                            >
+                                <div
+                                    className={`w-full flex items-start gap-4 p-4 rounded-xl transition-all duration-300 hover:shadow-md
+                  ${selectedColor.bg}`}
+                                >
+                                    {/* Icon */}
+                                    <div className="flex-shrink-0">
+                                        <div
+                                            className={`size-9 rounded-lg flex items-center justify-center
+                      bg-white/60 ${selectedColor.text}`}
+                                        >
+                                            <LuGraduationCap fontSize={18} />
+                                        </div>
                                     </div>
-                                    <div className='flex items-center justify-center gap-2 ex-span'>
-                                        <FaLocationDot fontSize={12} className='contact-icon' />
-                                        <span>Ahmedabad, Gujarat</span>
+
+                                    {/* Content */}
+                                    <div className="flex flex-col gap-1 flex-1">
+                                        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-1">
+                                            <h6 className="text-xs text-gray-500">
+                                                {item.institute}
+                                            </h6>
+                                            <span className="text-xs text-gray-500">
+                                                {item.startDate} – {item.endDate}
+                                            </span>
+                                        </div>
+
+                                        <div className="flex flex-col items-start gap-1">
+                                            <p className="text-sm lg:text-base text-gray-700 font-medium">
+                                                {item.degree}
+                                            </p>
+                                            <span className="text-xs text-gray-500">
+                                                {item.location}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                ))}
-
+                        );
+                    })}
+                </div>
             </div>
-        </div>
-    )
+        </section>
+    );
 }

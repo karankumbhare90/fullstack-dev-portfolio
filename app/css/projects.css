@@ -4,10 +4,53 @@
 .latest-projects{
     .project-slider{
         .slick-slider{
-            @apply pb-10;
+
+            .slick-track{
+                @apply !flex items-stretch;
+            }
 
             .slick-slide{
-                @apply px-3;
+                @apply px-3 h-[inherit];
+
+                &>div:first-child{
+                    @apply h-full;
+                }
+            }
+
+            .slick-dots{
+                @apply !flex items-center justify-center gap-2 bottom-0;
+
+                li {
+                    @apply w-2.5 h-2.5 rounded-full border-2 border-[var(--secondary-color-2)] cursor-pointer mx-0;
+
+                    &.slick-active{
+                        @apply bg-[var(--secondary-color-2)];
+                    }
+                    button{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.testimonial{
+    .testimonial-slider{
+        .slick-slider{
+            .slick-list{
+                margin: 0 -8px;
+            }
+            .slick-track{
+                @apply !flex items-stretch justify-start;
+            }
+
+            .slick-slide{
+                @apply h-[inherit] mx-2;
+
+                &>div:first-child{
+                    @apply h-full;
+                }
             }
 
             .slick-dots{

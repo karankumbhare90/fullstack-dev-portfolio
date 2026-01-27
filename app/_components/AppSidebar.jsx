@@ -10,7 +10,7 @@ export default function AppSidebar() {
             <div className='lg:grid grid-cols-1 gap-4 hidden lg:py-5'>
                 <ContactInfo />
             </div>
-            <div className='py-5 lg:border-t border-[var(--gray-color-2)] grid-cols-1 gap-4 lg:grid hidden'>
+            <div className='py-5 lg:border-t border-gray-300 flex-wrap items-start justify-start gap-4 lg:flex hidden'>
                 <SocialLinks />
             </div>
         </div>

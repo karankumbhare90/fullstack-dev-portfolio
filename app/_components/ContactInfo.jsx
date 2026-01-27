@@ -1,44 +1,27 @@
 import React from 'react'
-import { BsEnvelope } from "react-icons/bs";
-import { MdCall } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6"
 import { contactInfo } from '../assets/data';
+import Link from 'next/link';
 
 export default function ContactInfo() {
 
-    const { email, phone, address } = contactInfo;
-
     return (
         <>
-            <div className='w-full flex items-start justify-start gap-2.5'>
-                <a href={`mailto:${email}`} className='contact-icon-div group'>
-                    <BsEnvelope fontSize={12} className='contact-icon' />
-                </a>
-
-                <div className='flex flex-col gap-1 items-start justify-center'>
-                    <span className='contact-info-lable'>Email</span>
-                    <a href={`mailto:${email}`} className='contact-info'>{contactInfo.email}</a>
-                </div>
-            </div>
-            <div className='w-full flex flex-wrap items-start justify-start gap-2.5'>
-                <a href={`tel:${phone}`} className='contact-icon-div group'>
-                    <MdCall fontSize={12} className='contact-icon' />
-                </a>
-
-                <div className='flex flex-col gap-1 items-start justify-center'>
-                    <span className='contact-info-lable'>Phone</span>
-                    <a href={`tel:${phone}`} className='contact-info'>{phone}</a>
-                </div>
-            </div>
-            <div className='w-full flex flex-wrap items-start justify-start gap-2.5'>
-                <div className='contact-icon-div group'>
-                    <FaLocationDot fontSize={12} className='contact-icon' />
-                </div>
-                <div className='flex flex-col gap-1 items-start justify-center'>
-                    <span className='contact-info-lable'>Adress</span>
-                    <div className='contact-info'>{address}</div>
-                </div>
-            </div>
+            {contactInfo && contactInfo.length > 0 &&
+                contactInfo.map((item, index) => {
+                    const Icon = item.icon;
+                    return item.link && (
+                        <Link key={index || item} href={item.link} target='_blank' className='w-full flex items-start justify-start gap-2.5 group relative'>
+                            <div className='flex flex-shrink-0 p-2 rounded-full bg-slate-300 group-hover:bg-slate-400 text-gray-500 group-hover:text-gray-600 group-hover:shadow-sm transition-colors duration-300'>
+                                <Icon fontSize={16} />
+                            </div>
+                            <div className='flex flex-col gap-0.5 items-start justify-center transition-colors duration-300'>
+                                <span className='text-xs text-gray-500 group-hover:text-gray-600'>{item.label}</span>
+                                <span className='text-xs text-gray-600 group-hover:text-gray-700'>{item.linkLabel}</span>
+                            </div>
+                        </Link>
+                    )
+                })
+            }
         </>
     )
 }

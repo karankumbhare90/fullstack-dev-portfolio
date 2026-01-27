@@ -6,13 +6,9 @@ export default function SocialLinks() {
     return (
         <>
             {socialLinks?.map((item) => (
-                <a href={`${item.url}`} key={item.id} className='flex items-start gap-3 lg:items-start justify-start'>
-                    <div className='contact-icon-div group'>
-                        <item.icon fontSize={14} className='contact-icon' />
-                    </div>
-                    <div className='flex flex-col gap-1 items-start justify-center'>
-                        <span className='contact-info-lable'>{item.name}</span>
-                        <div className='contact-info'>{item.handle}</div>
+                <a href={`${item.url}`} key={item.id} className='flex items-start gap-3 lg:items-start justify-start relative group'>
+                    <div className='p-2 rounded-full bg-slate-300 group-hover:bg-slate-400 text-gray-500 group-hover:text-gray-600 group-hover:shadow-sm transition-colors duration-300'>
+                        <item.icon fontSize={18} />
                     </div>
                 </a>
             ))}
