@@ -1,0 +1,37 @@
+@tailwind components;
+/* Contact Info CSS */
+
+@layer components{
+    .contact-icon-div{
+        @apply relative p-2 rounded-full bg-[var(--gray-color-2)] hover:bg-[var(--gray-color-3)];
+
+    }
+    .contact-icon{
+        @apply text-gray-500 group-hover:text-gray-600;
+    }
+
+    .contact-info-lable{
+        @apply text-xs sm:text-sm text-[var(--gray-color-5)];
+    }
+
+    .contact-info{
+        @apply text-xs sm:text-sm text-[var(--gray-color-6)] hover:text-[var(--gray-color-7)];
+    }
+
+    /* Contact Form CSS */
+    .contact{
+        .contact-form-input{
+            @apply flex flex-col items-start justify-start gap-1.5;
+            label{
+                @apply text-xs text-gray-500;
+            }
+            input, textarea{
+                @apply w-full px-3 py-2.5 rounded-md bg-transparent text-sm outline-none border border-gray-400 text-gray-700;
+
+                &::placeholder{
+                    @apply text-sm text-gray-500;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+name: Deploy - Develop
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Deploy to Staging
+        run: echo "🚀 Deploying develop branch to staging environment"
+        # Replace this step with actual deployment commands 
