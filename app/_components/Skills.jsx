@@ -33,7 +33,7 @@ export default function Skills() {
             </div>
 
             <div className="mt-5 lg:mt-6 skills-wrapper relative">
-                <div class="gradient left-gradient sm:hidden" />
+                <div className="gradient left-gradient sm:hidden" />
                 {/* FIRST TRACK (right → left) */}
                 <div className="skills-track sm:grid sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 sm:gap-5">
                     {skillsObj.map((item, index) => (
@@ -60,12 +60,12 @@ export default function Skills() {
                         </div>
                     ))}
                 </div>
-                <div class="gradient right-gradient sm:hidden" />
+                <div className="gradient right-gradient sm:hidden" />
             </div>
 
             {/* SECOND SLIDER (left → right) */}
-            <div className="mt-4 skills-wrapper reverse sm:hidden">
-                <div class="gradient left-gradient sm:hidden" />
+            <div className="mt-4 skills-wrapper reverse sm:hidden relative">
+                <div className="gradient left-gradient sm:hidden" />
                 <div className="reverse-track">
                     {skillsObj.map((item, index) => (
                         <div key={`rev-${index}`} className="skill-item">
