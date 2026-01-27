@@ -93,7 +93,7 @@ export default function Contact() {
                     onSubmit={handleSubmit}
                     data-aos="fade-up"
                     data-aos-delay="200"
-                    className="bg-slate-200 group relative p-5 rounded-md grid grid-cols-1 gap-5"
+                    className="bg-slate-100 group relative p-5 rounded-md grid grid-cols-1 gap-5"
                 >
                     <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-5">
                         <div className="relative contact-form-input">
