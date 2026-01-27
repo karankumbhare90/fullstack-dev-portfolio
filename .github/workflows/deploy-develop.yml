@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install Dependencies
         run: npm install
@@ -28,4 +28,4 @@ jobs:
 
       - name: Deploy to Staging
         run: echo "🚀 Deploying develop branch to staging environment"
-        # Replace this step with actual deployment commands 
+        # Replace this step with actual deployment commands
