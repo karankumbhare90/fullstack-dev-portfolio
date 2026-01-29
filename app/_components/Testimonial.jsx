@@ -1,18 +1,17 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Slider from 'react-slick'
-import { MdArrowOutward, MdChevronLeft, MdChevronRight, MdStar } from "react-icons/md";
-import { RiGithubLine } from "react-icons/ri";
+import { MdChevronLeft, MdChevronRight, MdStar } from "react-icons/md";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { projectsData, testimonialData } from '../assets/data';
+import { TestimonialData } from '../assets/testimonial';
 import SideBarDot from './Shared/SideBarDot';
-import { LuBriefcaseBusiness } from 'react-icons/lu';
-import Link from 'next/link';
 import Image from 'next/image';
 import { FaQuoteRight } from 'react-icons/fa6';
 
 export default function Testimonial() {
+
+    const { heading, description, testimonialData } = TestimonialData;
 
     const sliderRef = useRef(null);
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -98,42 +97,46 @@ export default function Testimonial() {
         <section className='section-component testimonial'>
             <SideBarDot />
             <div className='flex flex-col items-start justify-start gap-1.5' data-aos="fade-up">
-                <h4 className='section-heading mb-0'>Client Testimonial</h4>
-                <p className='section-subheading'>Experience I've in Development</p>
+                {heading && <h4 className="section-heading">{heading}</h4>}
+                {description && <p className="text-gray-500 leading-5 text-sm mb-0">{description}</p>}
             </div>
-            <div className="testimonial-slider w-full mt-5 lg:mt-6 relative mb-5 lg:mb-6">
-                <Slider ref={sliderRef} {...sliderSettings}>
-                    {testimonialCards}
-                </Slider>
-            </div>
-            <div className="flex items-center justify-end gap-4"
-                data-aos="fade-up"
-                data-aos-delay="200"
-            >
-                <button
-                    onClick={() => sliderRef.current.slickPrev()}
-                    disabled={isPrevDisabled}
-                    className={`rounded-full p-2 transition-all
+            {testimonialData && testimonialData.length > 0 &&
+                <>
+                    <div className="testimonial-slider w-full mt-5 lg:mt-6 relative mb-5 lg:mb-6">
+                        <Slider ref={sliderRef} {...sliderSettings}>
+                            {testimonialCards}
+                        </Slider>
+                    </div>
+                    <div className="flex items-center justify-end gap-4"
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                    >
+                        <button
+                            onClick={() => sliderRef.current.slickPrev()}
+                            disabled={isPrevDisabled}
+                            className={`rounded-full p-2 transition-all
       ${isPrevDisabled
-                            ? "bg-slate-200 text-gray-400 pointer-events-none"
-                            : "bg-slate-300 hover:bg-slate-400 text-gray-700"
-                        }`}
-                >
-                    <MdChevronLeft fontSize={16} />
-                </button>
+                                    ? "bg-slate-200 text-gray-400 pointer-events-none"
+                                    : "bg-slate-300 hover:bg-slate-400 text-gray-700"
+                                }`}
+                        >
+                            <MdChevronLeft fontSize={16} />
+                        </button>
 
-                <button
-                    onClick={() => sliderRef.current.slickNext()}
-                    disabled={isNextDisabled}
-                    className={`rounded-full p-2 transition-all
+                        <button
+                            onClick={() => sliderRef.current.slickNext()}
+                            disabled={isNextDisabled}
+                            className={`rounded-full p-2 transition-all
       ${isNextDisabled
-                            ? "bg-slate-200 text-gray-400 pointer-events-none"
-                            : "bg-slate-300 hover:bg-slate-400 text-gray-700"
-                        }`}
-                >
-                    <MdChevronRight fontSize={16} />
-                </button>
-            </div>
-        </section>
+                                    ? "bg-slate-200 text-gray-400 pointer-events-none"
+                                    : "bg-slate-300 hover:bg-slate-400 text-gray-700"
+                                }`}
+                        >
+                            <MdChevronRight fontSize={16} />
+                        </button>
+                    </div>
+                </>
+            }
+        </section >
     )
 }

@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import React from 'react'
-import { topProfileData } from '../assets/data'
+import { TopProfileData } from '../assets/topProfileData'
 import parse from 'html-react-parser';
 
 export default function TopProfile() {
-    const { name, profileImage, currentDesignation, quote } = topProfileData;
+    const { name, profileImage, currentDesignation, quote, linksData } = TopProfileData;
     return (
         <div className='w-full'>
             <div className='flex flex-col gap-2 items-center lg:items-start justify-center border-b border-slate-300 pb-5'>
@@ -38,6 +38,20 @@ export default function TopProfile() {
                         </span>
                     </div>
                 </div>
+
+                {linksData && linksData.length > 0 &&
+                    <div className='flex items-center justify-center lg:hidden mt-2 gap-2.5'>
+                        {linksData.map((item, index) => {
+                            const Icon = item.icon;
+                            return (
+                                <a key={index} target='_blank' href={item.link} className="button flex items-center justify-center gap-1 text-sm font-normal rounded-2xl bg-slate-200 hover:bg-slate-300 text-gray-700">
+                                    <Icon fontSize={15} />
+                                    {item.name}
+                                </a>
+                            )
+                        })}
+                    </div>
+                }
             </div>
         </div >
     )
