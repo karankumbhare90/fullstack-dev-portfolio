@@ -1,9 +1,13 @@
 import React from 'react'
-import { aboutHighlights } from '../assets/data'
 import SideBarDot from './Shared/SideBarDot'
 import { colorClasses } from '@/utils/colorClass'
+import { AboutMeData } from '../assets/about';
+
 
 export default function AboutMe() {
+
+    const { heading, description, aboutHighlights } = AboutMeData;
+
     return (
         <section className='section-component experience'>
             <SideBarDot />
@@ -14,18 +18,19 @@ export default function AboutMe() {
                 data-aos="fade-up"
                 data-aos-delay="100"
             >
-                <h4 className='section-heading mb-0'>About Me</h4>
+                <h4 className='section-heading mb-0'>{heading}</h4>
+                <p className='text-gray-500 leading-5 text-sm mb-0'>
+                    {description}
+                </p>
             </div>
 
             {/* Description */}
             <div
-                className='mt-2 lg:mt-3 overflow-hidden'
+                className='w-full overflow-hidden'
                 data-aos="fade-up"
                 data-aos-delay="200"
             >
-                <p className='text-gray-500 leading-5 text-sm'>
-                    {`I'm a Web Developer with a year of experience specializing in creating websites using MERN stack technologies. I've successfully completed various projects, delivering efficient and user-friendly applications. My expertise lies in building modern web solutions with a focus on functionality and design.`}
-                </p>
+
 
                 {/* Cards */}
                 <div className="mt-5 lg:mt-6 w-full grid grid-cols-2 gap-4">

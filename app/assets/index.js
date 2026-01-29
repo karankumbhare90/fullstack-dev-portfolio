@@ -1,0 +1,11 @@
+import * as TopProfileData from './topProfileData.js'
+import * as ContactInfoData from './contactInfo.js'
+import * as SocialLinksData from './social'
+import * as AboutMeData from './about.js'
+import * as ExperienceData from './experience.js'
+import * as EducationData from './education.js'
+import * as ProjectsData from './project.js'
+import * as SkillsData from './skills.js'
+import * as ToolsData from './tools.js'
+import * as TestimonialData from './testimonial.js'
+import * as ContactData from './contact';

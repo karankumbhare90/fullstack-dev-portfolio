@@ -2,9 +2,11 @@
 import React, { useState } from "react";
 import SideBarDot from "./Shared/SideBarDot";
 import toast from "react-hot-toast";
+import { ContactData } from "../assets/contact";
 
 export default function Contact() {
     const [loading, setLoading] = useState(false);
+    const { heading, description } = ContactData;
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -84,8 +86,8 @@ export default function Contact() {
         <div className="section-component contact">
             <SideBarDot />
             <div className='flex flex-col items-start justify-start gap-1.5' data-aos="fade-up">
-                <h4 className='section-heading mb-0'>Contact</h4>
-                <p className='section-subheading'>Experience I've in Development</p>
+                {heading && <h4 className="section-heading">{heading}</h4>}
+                {description && <p className="text-gray-500 leading-5 text-sm mb-0">{description}</p>}
             </div>
 
             <div className="mt-5 lg:mt-6 flex flex-col">

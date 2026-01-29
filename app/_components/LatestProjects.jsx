@@ -5,7 +5,7 @@ import { MdArrowOutward, MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { RiGithubLine } from "react-icons/ri";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { projectsData } from '../assets/data';
+import { ProjectsData } from '../assets/project';
 import SideBarDot from './Shared/SideBarDot';
 import { LuBriefcaseBusiness } from 'react-icons/lu';
 import Link from 'next/link';
@@ -14,6 +14,8 @@ import { colorClasses } from '@/utils/colorClass';
 export default function LatestProjects() {
     const sliderRef = useRef(null);
     const titleRefs = useRef([]);
+
+    const { heading, description, projectsData } = ProjectsData;
 
     const setEqualHeight = () => {
         let maxHeight = 0;
@@ -134,17 +136,19 @@ export default function LatestProjects() {
                 className='flex flex-col items-start justify-start gap-1.5'
                 data-aos="fade-up"
             >
-                <h4 className='section-heading mb-0'>Latest Projects</h4>
-                <p className='section-subheading'>Experience I've in Development</p>
+                {heading && <h4 className="section-heading">{heading}</h4>}
+                {description && <p className="text-gray-500 leading-5 text-sm mb-0">{description}</p>}
             </div>
 
-            <div className="project-slider relative w-full mt-5 lg:mt-6 mb-5 lg:mb-6">
-                <div className="gradient left-gradient" />
-                <Slider ref={sliderRef} {...sliderSettings}>
-                    {projectCards}
-                </Slider>
-                <div className="gradient right-gradient" />
-            </div>
+            {projectsData && projectsData.length > 0 &&
+                <div className="project-slider relative w-full mt-5 lg:mt-6 mb-5 lg:mb-6">
+                    <div className="gradient left-gradient" />
+                    <Slider ref={sliderRef} {...sliderSettings}>
+                        {projectCards}
+                    </Slider>
+                    <div className="gradient right-gradient" />
+                </div>
+            }
 
             <div className='flex items-center justify-end gap-4'>
                 <button onClick={() => sliderRef.current.slickPrev()} className='bg-slate-300 rounded-full p-2 hover:bg-slate-400 text-gray-700'>
