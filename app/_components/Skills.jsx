@@ -20,71 +20,70 @@ export default function Skills() {
                 {description && <p className="text-gray-500 leading-5 text-sm mb-0">{description}</p>}
             </div>
 
-            <div className="mt-5 lg:mt-6 skills-wrapper relative">
-                <div class="gradient left-gradient sm:hidden" />
-                {/* FIRST TRACK (right → left) */}
-                <div className="skills-track sm:grid sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 sm:gap-5">
-                    {skillsObj.map((item, index) => (
-                        <div key={index} className="skill-item">
-                            <div className={`w-full h-full flex flex-col items-center justify-center bg-slate-200 transition-all duration-300 rounded-md p-4 gap-4 ${item.bgClass}`}>
-                                <div className="relative overflow-hidden size-10">
-                                    <Image src={item.icon} alt={item.name} fill className="object-contain" />
+            {skillsObj && skillsObj.length > 0 &&
+                <>
+                    <div className="mt-5 lg:mt-6 skills-wrapper relative">
+                        <div className="gradient left-gradient sm:hidden" />
+                        <div className="skills-track sm:grid sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 sm:gap-5">
+                            {skillsObj.map((item, index) => (
+                                <div key={index} className="skill-item">
+                                    <div className={`w-full h-full flex flex-col items-center justify-center bg-slate-200 transition-all duration-300 rounded-md p-4 gap-4 ${item.bgClass}`}>
+                                        <div className="relative overflow-hidden size-10">
+                                            <Image src={item.icon} alt={item.name} fill className="object-contain" />
+                                        </div>
+                                        <span className="text-xs text-gray-500 text-center">{item.name}</span>
+                                    </div>
                                 </div>
-                                <span className="text-xs text-gray-500 text-center">{item.name}</span>
-                            </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
 
-                <div className="skills-track sm:hidden">
-                    {skillsObj.map((item, index) => (
-                        <div key={`dup-${index}`} className="skill-item">
-                            <div className={`w-full h-full flex flex-col items-center justify-center bg-slate-200 transition-all duration-300 rounded-md p-4 gap-4 ${item.bgClass}`}>
-                                <div className="relative overflow-hidden size-10">
-                                    <Image src={item.icon} alt={item.name} fill className="object-contain" />
+                        <div className="skills-track sm:hidden">
+                            {skillsObj.map((item, index) => (
+                                <div key={`dup-${index}`} className="skill-item">
+                                    <div className={`w-full h-full flex flex-col items-center justify-center bg-slate-200 transition-all duration-300 rounded-md p-4 gap-4 ${item.bgClass}`}>
+                                        <div className="relative overflow-hidden size-10">
+                                            <Image src={item.icon} alt={item.name} fill className="object-contain" />
+                                        </div>
+                                        <span className="text-xs text-gray-500 text-center">{item.name}</span>
+                                    </div>
                                 </div>
-                                <span className="text-xs text-gray-500 text-center">{item.name}</span>
-                            </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
-                <div class="gradient right-gradient sm:hidden" />
-            </div>
+                        <div className="gradient right-gradient sm:hidden" />
+                    </div>
 
-            {/* SECOND SLIDER (left → right) */}
-            <div className="mt-4 skills-wrapper reverse sm:hidden">
-                <div class="gradient left-gradient sm:hidden" />
-                <div className="reverse-track">
-                    {skillsObj.map((item, index) => (
-                        <div key={`rev-${index}`} className="skill-item">
-                            <div className={`w-full h-full flex flex-col items-center justify-center bg-slate-200 transition-all duration-300 rounded-md p-4 gap-4 ${item.bgClass}`}>
-                                <div className="relative overflow-hidden size-10">
-                                    <Image src={item.icon} alt={item.name} fill className="object-contain" />
+                    {/* SECOND SLIDER (left → right) */}
+                    <div className="mt-4 skills-wrapper reverse sm:hidden">
+                        <div className="gradient left-gradient sm:hidden" />
+                        <div className="reverse-track">
+                            {skillsObj.map((item, index) => (
+                                <div key={`rev-${index}`} className="skill-item">
+                                    <div className={`w-full h-full flex flex-col items-center justify-center bg-slate-200 transition-all duration-300 rounded-md p-4 gap-4 ${item.bgClass}`}>
+                                        <div className="relative overflow-hidden size-10">
+                                            <Image src={item.icon} alt={item.name} fill className="object-contain" />
+                                        </div>
+                                        <span className="text-xs text-gray-500 text-center">{item.name}</span>
+                                    </div>
                                 </div>
-                                <span className="text-xs text-gray-500 text-center">{item.name}</span>
-                            </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
 
-                <div className="skills-track reverse-track sm:hidden">
-                    {skillsObj.map((item, index) => (
-                        <div key={`rev-dup-${index}`} className="skill-item">
-                            <div className={`w-full h-full flex flex-col items-center justify-center bg-slate-200 transition-all duration-300 rounded-md p-4 gap-4 ${item.bgClass}`}>
-                                <div className="relative overflow-hidden size-10">
-                                    <Image src={item.icon} alt={item.name} fill className="object-contain" />
+                        <div className="skills-track reverse-track sm:hidden">
+                            {skillsObj.map((item, index) => (
+                                <div key={`rev-dup-${index}`} className="skill-item">
+                                    <div className={`w-full h-full flex flex-col items-center justify-center bg-slate-200 transition-all duration-300 rounded-md p-4 gap-4 ${item.bgClass}`}>
+                                        <div className="relative overflow-hidden size-10">
+                                            <Image src={item.icon} alt={item.name} fill className="object-contain" />
+                                        </div>
+                                        <span className="text-xs text-gray-500 text-center">{item.name}</span>
+                                    </div>
                                 </div>
-                                <span className="text-xs text-gray-500 text-center">{item.name}</span>
-                            </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
-                <div className="gradient right-gradient sm:hidden" />
-            </div>
-        </>
+                        <div className="gradient right-gradient sm:hidden" />
+                    </div>
+                </>
             }
-
-
-        </section >
+        </section>
     )
 }
